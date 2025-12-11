@@ -2,7 +2,6 @@ import pandas as pd
 
 df = pd.read_csv("1_input.csv")
 nlist = list(df["path"])
-print(nlist)
 
 
 def get_pwd(nlist):  # part 1
@@ -19,7 +18,7 @@ def get_pwd(nlist):  # part 1
             init_n = init_n + k
             if init_n % 100 == 0:
                 cnt += 1
-    print("A: " + str(cnt))
+    print("A1: " + str(cnt))
     return cnt
 
 
@@ -42,7 +41,7 @@ def get_pwd_2(nlist):  # part 2
                     cnt += 1
             init_n += k
 
-    print("B: " + str(cnt))
+    print("A2: " + str(cnt))
     return cnt
 
 

@@ -71,10 +71,10 @@ def fst_lgst_dg(lstrg, K):
 ds = {}
 for b, l in d.items():
     ds[b] = fst_lgst_dg(str(l), 2)
-print("A: " + str(sum([s for s in ds.values()])))
+print("A1: " + str(sum([s for s in ds.values()])))
 
 
 ds2 = {}
 for b, l in d.items():
     ds2[b] = fst_lgst_dg(str(l), 12)
-print("B: " + str(sum([s for s in ds2.values()])))
+print("A2: " + str(sum([s for s in ds2.values()])))

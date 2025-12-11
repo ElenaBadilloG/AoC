@@ -32,8 +32,6 @@ def get_invalids(i, part=1):
         if part == 2:
             a = is_fus(n)
         if a:
-            print("YES: ")
-            print(n)
             sumn += n
     return sumn
 
