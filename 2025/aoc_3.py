@@ -27,9 +27,10 @@ def fst_lgst_dg(lstrg, K):
     # 1 get the max digit such that there are enough (K-1)subsequent elements (helper func)
     # 2 keep that max, remove from seq every before it and it, add it to string result
     # repeat until string results is size K.
-    # However...
-    # check if any of them is larger than the minimim of final string in their relative position.
-    # if so, substitute at corresponding relative position
+    # 3 however...
+    # check if any of the digits in the discarded element list (final wrt original)
+    # is larger than the minimum of final string in their relative position: that should not happen
+    # if so, substitute at corresponding *relative* position
 
     lstrg_or = lstrg
     rn = ""
@@ -47,9 +48,11 @@ def fst_lgst_dg(lstrg, K):
         else:
             break
 
-    rds = [(j, s) for j, s in enumerate(list(lstrg_or)) if j not in selected_indices]
+    rds = [
+        (j, s) for j, s in enumerate(list(lstrg_or)) if j not in selected_indices
+    ]  # residual elements
 
-    rn = list(rn)
+    rn = list(rn)  # preliminary final string
     for result_pos in range(len(rn)):
         current_selected_idx = selected_indices[result_pos]
         current_digit = int(rn[result_pos])
@@ -57,11 +60,11 @@ def fst_lgst_dg(lstrg, K):
         for orig_idx, digit in rds:
             if orig_idx > current_selected_idx and int(digit) > current_digit:
                 if len(lstrg_or) - orig_idx - 1 >= K - result_pos - 1:
-                    rn[result_pos] = digit
+                    rn[result_pos] = digit  # swap
                     selected_indices[result_pos] = orig_idx
                     break
 
-    rn = "".join(rn)
+    rn = "".join(rn)  # definitive final string
     return int(rn)
 
 
